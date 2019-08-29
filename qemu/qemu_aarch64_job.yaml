@@ -1,0 +1,36 @@
+# Sample JOB definition for a arm64 QEMU
+device_type: qemu
+job_name: Pipeline boot qemu-arm64 Ubuntu
+
+timeouts:
+  job:
+    minutes: 15
+  action:
+    minutes: 5
+priority: medium
+visibility: public
+context:
+  arch: arm64
+
+actions:
+  - deploy:
+       timeout:
+         minutes: 5
+       to: tmpfs
+       images:
+           kernel:
+             image_arg: -kernel {kernel} --append "console=ttyAMA0 root=/dev/vda rw"
+             url: file:///home/jammy/qemu/Image
+           rootfs:
+             image_arg: -drive format=raw,file={rootfs}
+             url: file:///home/jammy/qemu/ubuntu-core-14.04.1-core-arm64-ext4.img.gz
+             compression: gz
+       os: debian
+       root_partition: 1
+
+  - boot:
+       method: qemu
+       media: tmpfs
+       prompts: ["buildroot login: "]
+       failure_retry: 2
+
