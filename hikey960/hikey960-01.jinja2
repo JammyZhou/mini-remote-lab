@@ -1,7 +1,7 @@
 {% extends 'hi960-hikey.jinja2' %}
 {% set adb_serial_number = '4034918201000000' %}
 {% set fastboot_serial_number = '4034918201000000' %}
-{% set device_path = ['/dev/bus/usb/001'] %}
+{% set device_info = [{'board_id': '4034918201000000', 'usb_vendor_id': '18d1', 'usb_product_id': '4ee7'}] %}
 {% set power_on_command = 'ssh pi@192.168.31.193 relay-module.py -c CH1 -s on' %}
 {% set power_off_command = 'ssh pi@192.168.31.193 relay-module.py -c CH1 -s off' %}
 {% set hard_reset_command = 'ssh pi@192.168.31.193 relay-module.py -c CH1 -s reboot' %}
