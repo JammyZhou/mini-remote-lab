@@ -25,11 +25,13 @@ actions:
 - deploy:
     namespace: tlxc
     timeout:
-      minutes: 5
+      minutes: 10
     to: lxc
     packages:
-    - adb
-    - fastboot
+    - wget
+    - unzip
+    - git
+    - trace-cmd
     os: debian
 
 - boot:
@@ -40,6 +42,18 @@ actions:
     timeout:
       minutes: 5
     method: lxc
+
+- test:
+    namespace: tlxc
+    timeout:
+      minutes: 30
+    definitions:
+    - repository: https://github.com/JammyZhou/simple-test-defitions.git
+      from: git
+      path: automated/linux/android-platform-tools/install.yaml
+      name: install-android-platform-tools
+      parameters:
+        LINK: https://dl.google.com/android/repository/platform-tools_r29.0.2-linux.zip
 
 - deploy:
     timeout:
