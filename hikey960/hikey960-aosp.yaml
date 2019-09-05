@@ -68,7 +68,7 @@ actions:
     prompts:
     - "console:"
     timeout:
-      minutes: 5
+      minutes: 10
     method: fastboot
 
 - test:
