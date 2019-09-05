@@ -1,7 +1,7 @@
 {% extends 'hi960-hikey.jinja2' %}
 {% set adb_serial_number = '2DAC956A01A9B8F0' %}
 {% set fastboot_serial_number = '2DAC956A01A9B8F0' %}
-{% set device_info = [{'board_id': '2DAC956A01A9B8F0', 'usb_vendor_id': '18d1', 'usb_product_id': 'd00d'}] %}
+{% set device_info = [{'board_id': '2DAC956A01A9B8F0', 'usb_vendor_id': '18d1'}] %}
 {% set connection_list = ['uart0'] %}
 {% set connection_commands = {'uart0': 'telnet linaro-jammy 7000'} %}
 {% set connection_tags = {'uart0': ['primary', 'telnet']} %}
